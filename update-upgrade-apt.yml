@@ -2,14 +2,7 @@
 - hosts: all
   become: yes
   tasks:
-  
-    - name: Stop unattended-upgrades service  
-      ansible.builtin.service:  
-        name: unattended-upgrades  
-        state: stopped  
-        enabled: no  # Disable auto-start temporarily  
-
-    - name: Update apt cache
+     - name: Update apt cache
       apt: update_cache=yes
 
     - name: Upgrade all packages
@@ -18,13 +11,7 @@
     - name: Auto-remove unused packages
       apt: autoremove=yes
 
-    - name: Restart unattended-upgrades service  
-      ansible.builtin.service:  
-        name: unattended-upgrades  
-        state: started  
-        enabled: yes 
-
-    - name: Reboot if necessary
+     - name: Reboot if necessary
       reboot:
         msg: "Reboot initiated by Ansible"
         connect_timeout: 5
