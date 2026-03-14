@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   tasks:
-     - name: Update apt cache
+    - name: Update apt cache
       apt: update_cache=yes
 
     - name: Upgrade all packages
@@ -11,7 +11,7 @@
     - name: Auto-remove unused packages
       apt: autoremove=yes
 
-     - name: Reboot if necessary
+    - name: Reboot if necessary
       reboot:
         msg: "Reboot initiated by Ansible"
         connect_timeout: 5
