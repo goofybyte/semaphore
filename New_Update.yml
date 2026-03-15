@@ -2,6 +2,8 @@
 - name: Update and Upgrade APT Packages
   hosts: all
   become: yes
+  become_method: sudo
+  become_flags: '-S'
   tasks:
     - name: Update package lists
       apt:
