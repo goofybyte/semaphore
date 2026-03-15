@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   become_method: sudo
-  become_flags: '-S'
+  become_user: root
   tasks:
     - name: Update package lists
       apt:
