@@ -1,0 +1,23 @@
+---
+- name: Update and Upgrade APT Packages
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update package lists
+      apt:
+        update_cache: yes
+      tags:
+        - update
+
+    - name: Upgrade all packages
+      apt:
+        name: "*"
+        state: latest
+      tags:
+        - upgrade
+
+    - name: Clean package cache
+      apt:
+        autoclean: yes
+      tags:
+        - cleanup
